@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantAgent AI | 多智能體量化交易系統</title>
+    <!-- 引入 Tailwind CSS 快速排版 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 FontAwesome 圖示 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入 Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Tailwind slate-900 */
+            color: #f8fafc;
+        }
+        /* 背景漸層動畫效果 */
+        .bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, rgba(15,23,42,0) 70%);
+            top: -200px;
+            left: -200px;
+            z-index: -1;
+            border-radius: 50%;
+        }
+        .bg-glow-right {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(15,23,42,0) 70%);
+            bottom: 100px;
+            right: -100px;
+            z-index: -1;
+            border-radius: 50%;
+        }
+        /* 玻璃擬態卡片 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.5);
+        }
+        /* 漸層文字 */
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="relative overflow-x-hidden min-h-screen">
+
+    <!-- 背景裝飾 -->
+    <div class="bg-glow"></div>
+    <div class="bg-glow-right"></div>
+
+    <!-- 導覽列 -->
+    <nav class="fixed w-full z-50 top-0 glass-card border-b-0 py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-network-wired text-sky-400 text-2xl"></i>
+            <span class="text-xl font-bold tracking-wider">QuantAgent<span class="text-sky-400">.AI</span></span>
+        </div>
+        <div class="hidden md:flex gap-8 font-medium text-slate-300">
+            <a href="#" class="hover:text-white transition">平台優勢</a>
+            <a href="#" class="hover:text-white transition">智能體架構</a>
+            <a href="#" class="hover:text-white transition">回測數據</a>
+        </div>
+        <div>
+            <button class="px-5 py-2 rounded-full border border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition font-semibold">
+                進入儀表板
+            </button>
+        </div>
+    </nav>
+
+    <!-- 英雄區塊 (Hero Section) -->
+    <header class="pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2 space-y-6 z-10">
+            <div class="inline-block px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-sm font-semibold mb-2">
+                <i class="fa-solid fa-robot mr-2"></i> v2.0 系統上線：全自動 LLM 協作
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+                新世代量化交易<br>
+                <span class="text-gradient">多智能體協作引擎</span>
+            </h1>
+            <p class="text-slate-400 text-lg leading-relaxed">
+                告別單一演算法的盲點。我們的平台部署多個專精不同領域的 AI 智能體（分析師、交易員、風控官），在毫秒之間進行辯論、共識與決策，為您打造自適應的穩健交易策略。
+            </p>
+            <div class="flex gap-4 pt-4">
+                <button class="px-8 py-3 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 font-bold hover:shadow-[0_0_15px_rgba(56,189,248,0.5)] transition">
+                    開始回測策略
+                </button>
+                <button class="px-8 py-3 rounded-lg glass-card font-bold hover:bg-white/10 transition">
+                    查看架構文檔
+                </button>
+            </div>
+        </div>
+        <div class="md:w-1/2 relative w-full h-[400px] flex justify-center items-center">
+            <!-- 模擬多智能體協作的視覺化動畫元素 -->
+            <div class="relative w-full max-w-md h-full flex justify-center items-center">
+                <!-- 中央大腦/主控 -->
+                <div class="absolute w-24 h-24 rounded-full border-2 border-sky-400 flex items-center justify-center animate-pulse bg-sky-900/50 shadow-[0_0_30px_rgba(56,189,248,0.5)] z-20">
+                    <i class="fa-solid fa-brain text-4xl text-sky-300"></i>
+                </div>
+                <!-- 衛星智能體 1: 風控 -->
+                <div class="absolute top-10 left-10 w-16 h-16 rounded-full glass-card flex flex-col items-center justify-center border-red-500/50 text-red-400">
+                    <i class="fa-solid fa-shield-halved text-xl"></i>
+                    <span class="text-[10px] mt-1">風控</span>
+                </div>
+                <!-- 衛星智能體 2: 策略 -->
+                <div class="absolute top-10 right-10 w-16 h-16 rounded-full glass-card flex flex-col items-center justify-center border-purple-500/50 text-purple-400">
+                    <i class="fa-solid fa-lightbulb text-xl"></i>
+                    <span class="text-[10px] mt-1">策略</span>
+                </div>
+                <!-- 衛星智能體 3: 數據 -->
+                <div class="absolute bottom-10 left-20 w-16 h-16 rounded-full glass-card flex flex-col items-center justify-center border-green-500/50 text-green-400">
+                    <i class="fa-solid fa-chart-line text-xl"></i>
+                    <span class="text-[10px] mt-1">分析</span>
+                </div>
+                <!-- 衛星智能體 4: 執行 -->
+                <div class="absolute bottom-10 right-20 w-16 h-16 rounded-full glass-card flex flex-col items-center justify-center border-yellow-500/50 text-yellow-400">
+                    <i class="fa-solid fa-bolt text-xl"></i>
+                    <span class="text-[10px] mt-1">執行</span>
+                </div>
+                <!-- 連接線 (純CSS裝飾) -->
+                <svg class="absolute inset-0 w-full h-full z-0 opacity-30" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <line x1="50" y1="50" x2="25" y2="25" stroke="#38bdf8" stroke-width="0.5" stroke-dasharray="2,2"/>
+                    <line x1="50" y1="50" x2="75" y2="25" stroke="#38bdf8" stroke-width="0.5" stroke-dasharray="2,2"/>
+                    <line x1="50" y1="50" x2="35" y2="75" stroke="#38bdf8" stroke-width="0.5" stroke-dasharray="2,2"/>
+                    <line x1="50" y1="50" x2="65" y2="75" stroke="#38bdf8" stroke-width="0.5" stroke-dasharray="2,2"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- 核心智能體功能區 -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">去中心化的交易大腦</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto">系統內建四個專屬的 AI Agent，透過模擬專業基金團隊的會議機制，解決單一模型在極端行情下的過度擬合（Overfitting）問題。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Agent 1 -->
+            <div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-bl-full -z-10 group-hover:bg-green-500/20 transition"></div>
+                <i class="fa-solid fa-chart-pie text-3xl text-green-400 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">Alpha 尋找者</h3>
+                <p class="text-sm text-slate-400">
+                    負責即時爬取新聞情緒、鏈上數據與技術指標，利用深度學習模型快速篩選潛在的交易標的與進場時機。
+                </p>
+            </div>
+            <!-- Agent 2 -->
+            <div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-bl-full -z-10 group-hover:bg-purple-500/20 transition"></div>
+                <i class="fa-solid fa-chess-knight text-3xl text-purple-400 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">策略驗證官</h3>
+                <p class="text-sm text-slate-400">
+                    對 Alpha 尋找者提出的信號進行蒙地卡羅模擬與歷史回測，確保策略在不同市場週期下的勝率與盈虧比。
+                </p>
+            </div>
+            <!-- Agent 3 -->
+            <div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-red-500/10 rounded-bl-full -z-10 group-hover:bg-red-500/20 transition"></div>
+                <i class="fa-solid fa-shield-virus text-3xl text-red-400 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">極端風控中心</h3>
+                <p class="text-sm text-slate-400">
+                    擁有一票否決權。嚴格控管最大回撤（Max Drawdown）與槓桿率，當市場波動率異常時自動觸發避險機制。
+                </p>
+            </div>
+            <!-- Agent 4 -->
+            <div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-500/10 rounded-bl-full -z-10 group-hover:bg-yellow-500/20 transition"></div>
+                <i class="fa-solid fa-bolt text-3xl text-yellow-400 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">智能路由執行</h3>
+                <p class="text-sm text-slate-400">
+                    將通過審核的訂單拆分（TWAP/VWAP），在多個交易所間尋找最佳滑點與手續費進行毫秒級的高頻下單。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 終端機風格 Demo 區塊 -->
+    <section class="py-10 px-6 max-w-5xl mx-auto mb-20">
+        <div class="rounded-xl bg-slate-950 border border-slate-800 overflow-hidden shadow-2xl">
+            <div class="bg-slate-900 px-4 py-2 border-b border-slate-800 flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                <span class="text-xs text-slate-500 ml-2 font-mono">multi_agent_consensus.log</span>
+            </div>
+            <div class="p-6 font-mono text-sm space-y-3 h-64 overflow-y-auto">
+                <div class="text-green-400">[Alpha Analyst] <span class="text-slate-300">Detected bullish divergence on BTC/USDT at 15m timeframe. Confidence: 87%.</span></div>
+                <div class="text-purple-400">[Strategy Validator] <span class="text-slate-300">Backtesting current pattern... Win rate 65%, expected R:R is 1:2.4. Signal approved.</span></div>
+                <div class="text-red-400">[Risk Controller] <span class="text-slate-300">Volatility is high (VIX proxy). Adjusting position size down by 30% to maintain portfolio VaR. Max loss capped at 1.5%.</span></div>
+                <div class="text-sky-400">[Consensus Engine] <span class="text-slate-300">Agreement reached. Initiating long position...</span></div>
+                <div class="text-yellow-400">[Execution Router] <span class="text-slate-300">Order split into 4 chunks. Executing via Binance & OKX for optimal slippage...</span></div>
+                <div class="text-white pt-2 animate-pulse">Waiting for next market tick...</div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
